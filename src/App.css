@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+.background {
+  background-color: #e8ffce80;
+
+}
+.mainContainer {
+    width: 100%;
+    height: 90.6vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.allPostContainer {
+  background-color: #e8ffcea6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.postShadow img , .postShadow .title{
+    cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+::-webkit-scrollbar {
+  width: 12px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 12px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #94ADD7;
+  border-radius: 20px;
+}
+
+.loginCard {
+  background: linear-gradient( to bottom right ,rgba(255, 255, 255, 0.538) , rgba(233, 174, 229, 0.544)  ) !important;
+}
+
+.loginImgContainer {
+  max-width: 50vw;
+  height: 100%;
+  /* border: 2px solid red; */
+}
+.loginContainer {
+  background: url("./utils/mandala.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+}
+
+.loginImgContainer img {
+  /* border: 2px solid grey; */
+  height: 100% !important;
 }
