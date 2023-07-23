@@ -13,6 +13,8 @@ const Home = () => {
     fetchPost();
   }, []);
 
+  console.log(url)
+
   const fetchPost = async () => {
     try {
       const response = await fetch(url, { credentials: "include" });
