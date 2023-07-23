@@ -20,7 +20,9 @@ const DetailedPost = () => {
 
   useEffect(() => {
     fetchPost();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
 
   const fetchPost = async () => {
     try {
@@ -43,10 +45,10 @@ const DetailedPost = () => {
 
 
     // time
-    var time= postInfo?.createdAt;
-    if (postInfo?.createdAt !="") {
-      time ='<ReactTimeAgo className="ms-2" date={Date.parse(postInfo.createdAt)} locale="en-US" />';
-    }
+    // var time= postInfo?.createdAt;
+    // if (postInfo?.createdAt !== "") {
+    //   time ='<ReactTimeAgo className="ms-2" date={Date.parse(postInfo.createdAt)} locale="en-US" />';
+    // }
   return (
     <Layout>
       <div className="container mx-auto text-center pb-4">

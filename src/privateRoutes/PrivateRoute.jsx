@@ -7,8 +7,10 @@ const PrivateRoute = () => {
 
   const apiURL = process.env.REACT_APP_APIURL;
   const url = apiURL + "/api/v1/user";
+
   useEffect(() => {
     fetchProfile();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchProfile = async () => {

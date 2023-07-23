@@ -18,6 +18,7 @@ const EditPost = () => {
 
   useEffect(() => {
     fetchPost();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchPost = async () => {
