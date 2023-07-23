@@ -1,16 +1,17 @@
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet, Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../store/UserContext";
 import { useContext, useEffect } from "react";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 const PrivateRoute = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
 
   const apiURL = process.env.REACT_APP_APIURL;
   const url = apiURL + "/api/v1/user";
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProfile();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchProfile = async () => {
@@ -23,13 +24,14 @@ const PrivateRoute = () => {
         // setRedirect(true);
       } else {
         // setRedirect(false);
+        navigate("/login");
         setUserInfo(null);
       }
     } catch (error) {
       toast.info("Something went wrong.");
     }
   };
-  // if(!userInfo) return ""
+  if (!userInfo) return "";
   return userInfo ? <Outlet /> : <Navigate to="/login" />;
 };
 
