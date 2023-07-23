@@ -13,18 +13,22 @@ const EditPost = () => {
   const { id } = useParams();
 
   const apiURL = process.env.REACT_APP_APIURL;
-  const url = apiURL + "api/v1/post";
-  
+  const url = apiURL + "/api/v1/post";
+
+  const token = sessionStorage.getItem("token");
 
   useEffect(() => {
     fetchPost();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchPost = async () => {
     try {
       const respone = await fetch(`${url}/${id}`, {
         credentials: "include",
+        headers: {
+          Authorization: token,
+        },
       });
       const post = await respone.json();
       const { title, summary, description } = post.post;
@@ -54,6 +58,9 @@ const EditPost = () => {
         method: "PUT",
         body: data,
         credentials: "include",
+        headers: {
+          Authorization: token,
+        },
       });
       const responseData = await response.json();
       if (responseData.status) {

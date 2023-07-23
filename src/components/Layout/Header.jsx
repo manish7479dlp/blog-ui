@@ -13,14 +13,16 @@ const Header = () => {
   const navigate = useNavigate();
   useEffect(() => {
     fetchProfile();
-
      // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
 
   const fetchProfile = async () => {
     try {
-      const response = await fetch(url, { credentials: "include" });
+      const token = sessionStorage.getItem('token')
+      const response = await fetch(url, { credentials: "include" , headers: {
+        'Authorization': token
+      } });
       const userInfo = await response.json();
 
       if (userInfo.status) {
@@ -34,13 +36,16 @@ const Header = () => {
   };
   const logout = async () => {
     try {
-      const response = await fetch(url + "/logout", { credentials: "include" });
+      const token = sessionStorage.getItem('token')
+      const response = await fetch(url + "/logout", { credentials: "include" , headers: {
+        'Authorization': token
+      } });
       const responseInfo = await response.json();
       if (responseInfo.status) {
-        // const res = sessionStorage.removeItem("user");
+        sessionStorage.removeItem("token");
         setUserInfo(null);
-        navigate("/");
         toast.success(responseInfo.message);
+        navigate("/");
       } else {
         toast.success(responseInfo.message);
       }

@@ -20,35 +20,37 @@ const DetailedPost = () => {
 
   useEffect(() => {
     fetchPost();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   const fetchPost = async () => {
     try {
-      const respone = await fetch(`${url}/${id}`, { credentials: "include" });
-      const post = await respone.json();
+      const token = sessionStorage.getItem("token");
+      const response = await fetch(`${url}/${id}`, {
+        credentials: "include",
+        headers: {
+          Authorization: token,
+        },
+      });
+      const post = await response.json();
       setPostInfo(post.post);
     } catch (error) {
       toast.info("Something went wrong.");
     }
   };
 
-
   if (!postInfo) return "";
 
   // const { title, summary, cover, author, createdAt, description, _id } =
   //   postInfo;
 
-  const { title, cover, description, _id } =
-    postInfo;
+  const { title, cover, description, _id } = postInfo;
 
-
-    // time
-    // var time= postInfo?.createdAt;
-    // if (postInfo?.createdAt !== "") {
-    //   time ='<ReactTimeAgo className="ms-2" date={Date.parse(postInfo.createdAt)} locale="en-US" />';
-    // }
+  // time
+  // var time= postInfo?.createdAt;
+  // if (postInfo?.createdAt !== "") {
+  //   time ='<ReactTimeAgo className="ms-2" date={Date.parse(postInfo.createdAt)} locale="en-US" />';
+  // }
   return (
     <Layout>
       <div className="container mx-auto text-center pb-4">
@@ -73,7 +75,7 @@ const DetailedPost = () => {
           </span>
           <small className="col text-muted  d-flex align-items-center justify-content-end ">
             <FcOvertime className="me-2" />
-            
+
             {/* <ReactTimeAgo className="ms-2" date={Date.parse(postInfo.createdAt)} locale="en-US" /> */}
             {postInfo?.createdAt}
             {/* {time} */}

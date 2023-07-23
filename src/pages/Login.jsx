@@ -31,6 +31,7 @@ const Login = () => {
 
         if (responseInfo.status) {
           toast.success(responseInfo.message);
+          sessionStorage.setItem('token' , responseInfo.token);
           setUserInfo(responseInfo.user);
           setRedirect(true);
         } else {

@@ -10,7 +10,7 @@ const CreatePost = () => {
   const [files, setFiles] = useState("");
   const [description, setDescription] = useState("");
   const [redirect, setRedirect] = useState(false);
-  
+
   const apiURL = process.env.REACT_APP_APIURL;
   const url = apiURL + "/api/v1/post";
 
@@ -23,10 +23,14 @@ const CreatePost = () => {
     data.set("description", description);
 
     try {
+      const token = sessionStorage.getItem("token");
       const response = await fetch(url, {
         method: "POST",
         body: data,
         credentials: "include",
+        headers: {
+          Authorization: token,
+        },
       });
       const responseData = await response.json();
       if (responseData.status) {
