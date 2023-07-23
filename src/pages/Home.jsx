@@ -13,7 +13,6 @@ const Home = () => {
     fetchPost();
   }, []);
 
-  console.log(url)
 
   const fetchPost = async () => {
     try {
