@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../store/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 // import {FaUserCheck} from 'react-icons/Fa'
@@ -10,15 +10,13 @@ const url = apiURL + "/api/v1/user";
 
 const Header = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
-  const [redirect , setRedirect] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     fetchProfile();
-    
+
      // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
-  console.log(redirect);
 
   const fetchProfile = async () => {
     try {
@@ -27,9 +25,7 @@ const Header = () => {
 
       if (userInfo.status) {
         setUserInfo(userInfo.user);
-        setRedirect(true);
       } else {
-        setRedirect(false);
         setUserInfo(null);
       }
     } catch (error) {

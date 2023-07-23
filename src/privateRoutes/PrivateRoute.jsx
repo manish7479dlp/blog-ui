@@ -29,7 +29,7 @@ const PrivateRoute = () => {
       toast.info("Something went wrong.");
     }
   };
-  if(!userInfo) return ""
+  // if(!userInfo) return ""
   return userInfo ? <Outlet /> : <Navigate to="/login" />;
 };
 
