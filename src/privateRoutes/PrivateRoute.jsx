@@ -1,10 +1,34 @@
-import { Outlet , Navigate } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import { UserContext } from "../store/UserContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import {toast} from "react-toastify"
 const PrivateRoute = () => {
-  const {userInfo} = useContext(UserContext);
-  console.log(userInfo)
-    return userInfo ? <Outlet/> :< Navigate to ="/login" />
-}
+  const { userInfo, setUserInfo } = useContext(UserContext);
+
+  const apiURL = process.env.REACT_APP_APIURL;
+  const url = apiURL + "/api/v1/user";
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
+  const fetchProfile = async () => {
+    try {
+      const response = await fetch(url, { credentials: "include" });
+      const userInfo = await response.json();
+
+      if (userInfo.status) {
+        setUserInfo(userInfo.user);
+        // setRedirect(true);
+      } else {
+        // setRedirect(false);
+        setUserInfo(null);
+      }
+    } catch (error) {
+      toast.info("Something went wrong.");
+    }
+  };
+  if(!userInfo) return ""
+  return userInfo ? <Outlet /> : <Navigate to="/login" />;
+};
 
 export default PrivateRoute;

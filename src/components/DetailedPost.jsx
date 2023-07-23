@@ -9,8 +9,9 @@ import { UserContext } from "../store/UserContext";
 // import ReactTimeAgo from "react-time-ago";
 // import {  formatISO9075 } from 'date-fns'
 
-const url = "http://localhost:8000/api/v1/post";
-const imgLink = "http://localhost:8000";
+const apiURL = process.env.REACT_APP_APIURL;
+const url = apiURL + "/api/v1/post";
+const imgLink = apiURL;
 
 const DetailedPost = () => {
   const [postInfo, setPostInfo] = useState({});
@@ -40,6 +41,12 @@ const DetailedPost = () => {
   const { title, cover, description, _id } =
     postInfo;
 
+
+    // time
+    var time= postInfo?.createdAt;
+    if (postInfo?.createdAt !="") {
+      time ='<ReactTimeAgo className="ms-2" date={Date.parse(postInfo.createdAt)} locale="en-US" />';
+    }
   return (
     <Layout>
       <div className="container mx-auto text-center pb-4">
@@ -65,8 +72,9 @@ const DetailedPost = () => {
           <small className="col text-muted  d-flex align-items-center justify-content-end ">
             <FcOvertime className="me-2" />
             
-            {/* <ReactTimeAgo className="ms-2" date={new Date()} locale="en-US" /> */}
+            {/* <ReactTimeAgo className="ms-2" date={Date.parse(postInfo.createdAt)} locale="en-US" /> */}
             {postInfo?.createdAt}
+            {/* {time} */}
             {/* <ReactTimeAgo className="ms-2" date={postInfo?.createdAt} locale="en-US" /> */}
           </small>
         </div>

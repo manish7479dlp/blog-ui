@@ -4,10 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 // import {FaUserCheck} from 'react-icons/Fa'
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { toast } from "react-toastify";
-const url = "http://localhost:8000/api/v1/user";
+
+const apiURL = process.env.REACT_APP_APIURL;
+const url = apiURL + "/api/v1/user";
 
 const Header = () => {
-  const [redirect, setRedirect] = useState(false);
   const { userInfo, setUserInfo } = useContext(UserContext);
   const navigate = useNavigate();
 

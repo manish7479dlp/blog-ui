@@ -5,7 +5,8 @@ import { BiSolidRightArrowCircle, BiSolidUserDetail } from "react-icons/bi";
 import { FcOvertime } from "react-icons/fc";
 
 const Post = ({ title, summary, cover, author, createdAt, _id }) => {
-  const imgLink = "http://localhost:8000/" + cover;
+const apiURL = process.env.REACT_APP_APIURL;
+const imgLink = apiURL + "/" + cover;
 
   return (
     <div className="container-fluid container-lg r-md row border my-2 p-3 postShadow rounded">

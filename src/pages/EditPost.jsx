@@ -10,9 +10,11 @@ const EditPost = () => {
   const [files, setFiles] = useState("");
   const [description, setDescription] = useState("");
   const [redirect, setRedirect] = useState(false);
-
-  const url = "http://localhost:8000/api/v1/post";
   const { id } = useParams();
+
+  const apiURL = process.env.REACT_APP_APIURL;
+  const url = apiURL + "api/v1/post";
+  
 
   useEffect(() => {
     fetchPost();

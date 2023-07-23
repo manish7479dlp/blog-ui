@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import Post from "../components/Post";
 import { toast } from "react-toastify";
-const url = "http://localhost:8000/api/v1/post";
+
+const apiURL = process.env.REACT_APP_APIURL;
+const url = apiURL + "/api/v1/post";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);

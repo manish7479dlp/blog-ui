@@ -5,8 +5,8 @@ import { Navigate } from "react-router-dom";
 import { UserContext } from "../store/UserContext";
 import imgUrl from "../loginBanner.png"
 
-
-const url = "http://localhost:8000/api/v1/user/login";
+const apiURL = process.env.REACT_APP_APIURL;
+const url = apiURL + "/api/v1/user/login";
 
 const Login = () => {
   const [userName, setUserName] = useState("");
