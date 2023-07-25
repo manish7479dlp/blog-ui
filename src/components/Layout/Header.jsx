@@ -13,16 +13,18 @@ const Header = () => {
   const navigate = useNavigate();
   useEffect(() => {
     fetchProfile();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fetchProfile = async () => {
     try {
-      const token = sessionStorage.getItem('token')
-      const response = await fetch(url, { credentials: "include" , headers: {
-        'Authorization': token
-      } });
+      const token = sessionStorage.getItem("token");
+      const response = await fetch(url, {
+        credentials: "include",
+        headers: {
+          Authorization: token,
+        },
+      });
       const userInfo = await response.json();
 
       if (userInfo.status) {
@@ -36,10 +38,13 @@ const Header = () => {
   };
   const logout = async () => {
     try {
-      const token = sessionStorage.getItem('token')
-      const response = await fetch(url + "/logout", { credentials: "include" , headers: {
-        'Authorization': token
-      } });
+      const token = sessionStorage.getItem("token");
+      const response = await fetch(url + "/logout", {
+        credentials: "include",
+        headers: {
+          Authorization: token,
+        },
+      });
       const responseInfo = await response.json();
       if (responseInfo.status) {
         sessionStorage.removeItem("token");
@@ -70,9 +75,9 @@ const Header = () => {
             >
               Create Post
             </Link>
-            <div className="btn-group" style={{minWidth: "141px"}}>
+            <div className="btn-group" style={{ minWidth: "141px" }}>
               <button type="button" className="btn btn-primary">
-                <AiOutlineUserAdd style={{ marginRight: "4px"}} />
+                <AiOutlineUserAdd style={{ marginRight: "4px" }} />
                 {userInfo?.userName}
               </button>
               <button
@@ -84,18 +89,29 @@ const Header = () => {
                 <span className="visually-hidden">Toggle Dropdown</span>
               </button>
               <ul className="dropdown-menu bg-info bg-gradient text-center">
-                <Link
-                  to="/create-post"
-                  className="btn btn-success d-sm-none d-inline"
-                >
-                  Create Post
-                </Link>
-                <button
-                  onClick={logout}
-                  className="btn btn-danger mt-3 mt-sm-0 "
-                >
-                  Logout
-                </button>
+                <li>
+                  <Link
+                    to="/create-post"
+                    className="btn btn-success d-sm-none "
+                    style={{minWidth: "110px"}}
+                  >
+                    Create Post
+                  </Link>
+                </li>
+                <li >
+                  <Link to="/profile" className="btn btn-secondary mt-3 mt-sm-1 mb-3" style={{minWidth: "110px"}}>
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={logout}
+                    className="btn btn-danger mt-sm-0 "
+                    style={{minWidth: "110px"}}
+                  >
+                    Logout
+                  </button>
+                </li>
               </ul>
             </div>
           </div>
