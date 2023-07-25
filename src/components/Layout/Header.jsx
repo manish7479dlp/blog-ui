@@ -70,9 +70,9 @@ const Header = () => {
             >
               Create Post
             </Link>
-            <div className="btn-group">
+            <div className="btn-group" style={{minWidth: "141px"}}>
               <button type="button" className="btn btn-primary">
-                <AiOutlineUserAdd style={{ marginRight: "4px" }} />
+                <AiOutlineUserAdd style={{ marginRight: "4px"}} />
                 {userInfo?.userName}
               </button>
               <button
