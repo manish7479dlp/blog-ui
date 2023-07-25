@@ -22,8 +22,8 @@ const DetailedPost = () => {
 
   useEffect(() => {
     fetchPost();
-    if(!token) {
-      navigate("/")
+    if (!token) {
+      navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -54,16 +54,15 @@ const DetailedPost = () => {
           headers: {
             Authorization: token,
           },
-        });
-        
-        sessionStorage.removeItem("token")
+        }); 
         const deletedPost = await response.json();
+        if (deletedPost.status) {
+          navigate("/");
+        }
         toast.success(deletedPost.message);
-        navigate("/")
-      } 
+      }
     } catch (error) {
-        toast.info(deletePost.message);
-          
+      toast.info(deletePost.message);
     }
   };
 
