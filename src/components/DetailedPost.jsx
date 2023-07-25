@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import Layout from "./Layout/Layout";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { BiSolidUserDetail } from "react-icons/bi";
@@ -17,15 +17,19 @@ const DetailedPost = () => {
   const [postInfo, setPostInfo] = useState({});
   const { userInfo } = useContext(UserContext);
   const { id } = useParams();
+  const navigate = useNavigate();
+  const token = sessionStorage.getItem("token");
 
   useEffect(() => {
     fetchPost();
+    if(!token) {
+      navigate("/")
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchPost = async () => {
     try {
-      const token = sessionStorage.getItem("token");
       const response = await fetch(`${url}/${id}`, {
         credentials: "include",
         headers: {
@@ -36,6 +40,30 @@ const DetailedPost = () => {
       setPostInfo(post.post);
     } catch (error) {
       toast.info("Something went wrong.");
+    }
+  };
+
+  const deletePost = async () => {
+    try {
+      const confirm = window.confirm("Do you want to delete.");
+      if (confirm) {
+        const token = sessionStorage.getItem("token");
+        const response = await fetch(`${url}/${id}`, {
+          method: "DELETE",
+          credentials: "include",
+          headers: {
+            Authorization: token,
+          },
+        });
+        
+        sessionStorage.removeItem("token")
+        const deletedPost = await response.json();
+        toast.success(deletedPost.message);
+        navigate("/")
+      } 
+    } catch (error) {
+        toast.info(deletePost.message);
+          
     }
   };
 
@@ -94,10 +122,16 @@ const DetailedPost = () => {
             <Link
               to={`/edit-post/${_id}`}
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary p-2 me-2 me-sm-1"
             >
               Edit Post
             </Link>
+            <button
+              onClick={deletePost}
+              className="btn btn-danger w-sm-25 p-2 ms-2 ms-sm-1"
+            >
+              Delete Post
+            </button>
           </div>
         )}
       </div>

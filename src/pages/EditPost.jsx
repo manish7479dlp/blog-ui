@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout";
 import Editior from "../components/Editior";
 import { toast } from "react-toastify";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 const EditPost = () => {
   const [title, setTitle] = useState("");
@@ -16,9 +16,13 @@ const EditPost = () => {
   const url = apiURL + "/api/v1/post";
 
   const token = sessionStorage.getItem("token");
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetchPost();
+    if(!token) {
+      navigate("/")
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
