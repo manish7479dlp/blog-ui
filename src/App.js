@@ -8,6 +8,7 @@ import CreatePost from "./pages/CreatePost";
 import DetailedPost from "./components/DetailedPost";
 import EditPost from "./pages/EditPost";
 import PrivateRoute from "./privateRoutes/PrivateRoute";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/post/:id" element={<DetailedPost />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/edit-post/:id" element={<EditPost />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </UserContextProvider>
