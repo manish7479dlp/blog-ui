@@ -16,7 +16,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 5px;
 }
 
 /* Track */
@@ -27,7 +27,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #94ADD7;
+  background: #7e9fd8;
   border-radius: 20px;
 }
 
@@ -63,4 +63,7 @@
   height: 80px;
   width: 80px;
   border-radius: 50%;
+}
+.postCard {
+  overflow: hidden !important;
 }
