@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { BiSolidUserDetail } from "react-icons/bi";
 import { FcOvertime } from "react-icons/fc";
 import { UserContext } from "../store/UserContext";
-// import ReactTimeAgo from "react-time-ago";
+import ReactTimeAgo from "react-time-ago";
 // import {  formatISO9075 } from 'date-fns'
 
 const apiURL = process.env.REACT_APP_APIURL;
@@ -54,7 +54,7 @@ const DetailedPost = () => {
           headers: {
             Authorization: token,
           },
-        }); 
+        });
         const deletedPost = await response.json();
         if (deletedPost.status) {
           navigate("/");
@@ -71,13 +71,8 @@ const DetailedPost = () => {
   // const { title, summary, cover, author, createdAt, description, _id } =
   //   postInfo;
 
-  const { title, cover, description, _id } = postInfo;
+  const { title, cover, description, _id, createdAt } = postInfo;
 
-  // time
-  // var time= postInfo?.createdAt;
-  // if (postInfo?.createdAt !== "") {
-  //   time ='<ReactTimeAgo className="ms-2" date={Date.parse(postInfo.createdAt)} locale="en-US" />';
-  // }
   return (
     <Layout>
       <div className="container mx-auto text-center pb-4">
@@ -103,10 +98,13 @@ const DetailedPost = () => {
           <small className="col text-muted  d-flex align-items-center justify-content-end ">
             <FcOvertime className="me-2" />
 
-            {/* <ReactTimeAgo className="ms-2" date={Date.parse(postInfo.createdAt)} locale="en-US" /> */}
-            {postInfo?.createdAt}
-            {/* {time} */}
-            {/* <ReactTimeAgo className="ms-2" date={postInfo?.createdAt} locale="en-US" /> */}
+            {/* {postInfo?.createdAt} */}
+
+            <ReactTimeAgo
+              className="ms-2"
+              date={createdAt ? createdAt : new Date()}
+              locale="en-US"
+            />
           </small>
         </div>
         {/* description */}
