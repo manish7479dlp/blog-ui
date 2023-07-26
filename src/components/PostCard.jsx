@@ -1,6 +1,6 @@
 import React from "react";
 import { BiSolidRightArrowCircle } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
 import ReactTimeAgo from "react-time-ago";
 import { FcOvertime } from "react-icons/fc";
 import { toast } from "react-toastify";
@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 const PostCard = ({ cover, summary, createdAt, _id }) => {
   const navigate = useNavigate();
   const getPost = () => {
-    window.location = "/post/" + _id;
+    alert("hii")
+    // window.URL = "/post/" + _id;
   };
   return (
     <div className="card m-3" style={{ width: "18rem" }}>
@@ -32,9 +33,9 @@ const PostCard = ({ cover, summary, createdAt, _id }) => {
           <span className="">{summary}</span>
         </p>
         <div className="text-center">
-          <button className="btn btn-primary" onClick={getPost}>
+          <Link to = {"../post/" + _id} className="btn btn-primary">
             Read
-          </button>
+          </Link>
         </div>
       </div>
     </div>
