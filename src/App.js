@@ -10,6 +10,7 @@ import EditPost from "./pages/EditPost";
 import PrivateRoute from "./privateRoutes/PrivateRoute";
 import Profile from "./pages/Profile";
 import Pagenotfound from "./pages/Pagenotfound";
+import UpdateUser from "./pages/UpdateUser";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/edit-post/:id" element={<EditPost />} />
           <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/update-user" element={<UpdateUser />} />
         </Route>
       <Route path="*" element={<Pagenotfound />} />
       </Routes>
