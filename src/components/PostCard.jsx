@@ -4,6 +4,8 @@ import { useNavigate , Link } from "react-router-dom";
 import ReactTimeAgo from "react-time-ago";
 import { FcOvertime } from "react-icons/fc";
 import { toast } from "react-toastify";
+const apiURL = process.env.REACT_APP_APIURL;
+const imgLink = apiURL;
 
 const PostCard = ({ cover, summary, createdAt, _id }) => {
   const navigate = useNavigate();
@@ -12,12 +14,17 @@ const PostCard = ({ cover, summary, createdAt, _id }) => {
     // window.URL = "/post/" + _id;
   };
   return (
-    <div className="card m-3" style={{ width: "18rem" }}>
-      <img
-        src="https://random.imagecdn.app/500/200"
-        className="card-img-top"
+    <div className="card m-3 p-3" style={{ width: "18rem" }}>
+    <div className="  " >
+    <img
+        src={`${imgLink}/${cover}`}
+        className="card-img-top object-fit-fill rounded"
         alt="post-img"
+        style={{height: "150px"}}
+       
       />
+    </div>
+      
       <div className="card-body">
         <p className="text-end">
           <FcOvertime />{" "}
