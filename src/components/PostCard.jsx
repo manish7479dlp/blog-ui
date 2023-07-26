@@ -1,18 +1,12 @@
 import React from "react";
 import { BiSolidRightArrowCircle } from "react-icons/bi";
-import { useNavigate , Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import ReactTimeAgo from "react-time-ago";
 import { FcOvertime } from "react-icons/fc";
-import { toast } from "react-toastify";
 const apiURL = process.env.REACT_APP_APIURL;
 const imgLink = apiURL;
 
 const PostCard = ({ cover, summary, createdAt, _id }) => {
-  const navigate = useNavigate();
-  const getPost = () => {
-    alert("hii")
-    // window.URL = "/post/" + _id;
-  };
   return (
     <div className="card m-3 p-3" style={{ width: "18rem" }}>
     <div className="  " >

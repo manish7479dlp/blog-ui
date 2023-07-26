@@ -71,6 +71,7 @@ const UpdateUser = () => {
 
         toast.info("It is not implemented yet.")
       } catch (error) {
+        setRedirect(false)
         toast.warning("Something went wrong.");
       }
     }
