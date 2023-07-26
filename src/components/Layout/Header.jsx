@@ -99,7 +99,7 @@ const Header = () => {
                   </Link>
                 </li>
                 <li >
-                  <Link to={`profile/${userInfo._id}`} className="btn btn-secondary mt-3 mt-sm-1 mb-3" style={{minWidth: "110px"}}>
+                  <Link to={`../profile/${userInfo._id}`}  className="btn btn-secondary mt-3 mt-sm-1 mb-3" style={{minWidth: "110px"}}>
                     Profile
                   </Link>
                 </li>
