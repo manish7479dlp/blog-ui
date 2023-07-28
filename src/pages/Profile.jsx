@@ -80,8 +80,8 @@ const Profile = () => {
   return (
     <Layout>
       <div
-        style={{ background: "#e8ffcea6" }}
-        className="container-fluid row h-100 w-100 m-0 "
+        style={{ background: "#e8ffcea6", minHeight: "100vh" }}
+        className="container-fluid row w-100 m-0 "
       >
         <div className="col-md-5 col-12 mb-3 mb-md-0 mt-3 mt-md-0 d-flex justify-content-center align-items-center">
           <div className="profile">
@@ -115,7 +115,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-7 col-12 d-flex justify-content-center align-items-center flex-wrap h-100 overflow-auto">
+        <div className="col-md-7 col-12 d-flex justify-content-center align-items-center flex-wrap  overflow-auto">
           {postInfo &&
             postInfo.map((data, idx) => {
               return <PostCard key={idx} {...data} />;
