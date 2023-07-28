@@ -46,39 +46,43 @@ const UpdateUser = () => {
   };
 
   const updateUser = async () => {
+    const token = sessionStorage.getItem("token");
+
     if (!changerPassword && (!userName || !email)) {
       toast.info("All fields are required.");
-    } else if (changerPassword && (!userName || !password || !confirmPassword || !email)) {
+    } else if (
+      changerPassword &&
+      (!userName || !password || !confirmPassword || !email)
+    ) {
       toast.info("All fields are required.");
     } else if (password !== confirmPassword) {
       toast.info("Password and Confirm Password are not Matched.");
     } else {
       try {
-        // const response = await fetch(url, {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify({ userName, password, email }),
-        // });
-        // const responseInfo = await response.json();
-        // if (responseInfo.status === true) {
-        //   toast.success(responseInfo.message);
-        //   setRedirect(true);
-        // } else {
-        //   toast.warning(responseInfo.message);
-        // }
-
-        toast.info("It is not implemented yet.")
+        const response = await fetch(url + "/update", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify({ userName, password, email }),
+        });
+        const responseInfo = await response.json();
+        if (responseInfo.status === true) {
+          toast.success(responseInfo.message);
+          setRedirect(true);
+        } else {
+          toast.warning(responseInfo.message);
+        }
       } catch (error) {
-        setRedirect(false)
+        setRedirect(false);
         toast.warning("Something went wrong.");
       }
     }
   };
 
   if (redirect) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   return (
@@ -146,7 +150,7 @@ const UpdateUser = () => {
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
                     />
-                    <label htmlFor="floatingPassword1">Password</label>
+                    <label htmlFor="floatingPassword1">New Password</label>
                   </div>
                   <div className="form-floating mb-3">
                     <input
