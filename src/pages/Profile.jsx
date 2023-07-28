@@ -7,7 +7,6 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 const apiURL = process.env.REACT_APP_APIURL;
 const userUrl = apiURL + "/api/v1/user";
 const postUrl = apiURL + "/api/v1/post/user";
-const userImgUrl = "../utils/userImg.png"
 
 const Profile = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
