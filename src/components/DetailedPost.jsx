@@ -71,7 +71,7 @@ const DetailedPost = () => {
   // const { title, summary, cover, author, createdAt, description, _id } =
   //   postInfo;
 
-  const { title, cover, description, _id, createdAt } = postInfo;
+  const { title, cover, description, _id, createdAt , summary } = postInfo;
 
   return (
     <Layout>
@@ -107,8 +107,14 @@ const DetailedPost = () => {
             />
           </small>
         </div>
+        <div className="mb-3 text-start ">
+          <p className="h4">Summary</p>
+          <mark className="text-dark p-1" style={{backgroundColor: "#f2c23f"}}>{summary}</mark>
+        </div>
         {/* description */}
         <div className="mb-3">
+        <p className="h4 text-start">Description</p>
+
           <p
             className="text-muted text-start"
             dangerouslySetInnerHTML={{ __html: description }}
