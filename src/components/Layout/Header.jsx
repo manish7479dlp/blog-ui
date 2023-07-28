@@ -60,7 +60,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="navbar bg-info bg-gradient sm-rounded">
+    <nav className="navbar bg-info bg-gradient rounded">
       <div className="container-fluid ">
         <Link to="/" className="navbar-brand text-white ms-sm-2">
           <p style={{ textShadow: "2px 3px 8px #F4D160" }} className="h3">
