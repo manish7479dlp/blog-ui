@@ -3,7 +3,6 @@ import { BiSolidRightArrowCircle } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import ReactTimeAgo from "react-time-ago";
 import { FcOvertime } from "react-icons/fc";
-const apiURL = process.env.REACT_APP_APIURL;
 
 const PostCard = ({ cover, summary, createdAt, _id }) => {
   return (
