@@ -104,12 +104,7 @@ const DetailedPost = () => {
         </div>
         <div className="mb-3 text-start ">
           <p className="h4">Summary</p>
-          <mark
-            className="text-dark p-1"
-            style={{ backgroundColor: "#f2c23f" }}
-          >
-            {summary}
-          </mark>
+          <mark className="text-dark p-1">{summary}</mark>
         </div>
         {/* description */}
         <div className="mb-3">
